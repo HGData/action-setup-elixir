@@ -99,13 +99,16 @@ runs:
     run: |
       mix deps.clean --all
       mix clean
+    shell: bash
 
   - name: Install Rebar
     run: mix local.rebar --force
+    shell: bash
     if: inputs.install-rebar == 'true'
 
   - name: Install Hex
     run: mix local.hex --force
+    shell: bash
     if: inputs.install-hex == 'true'
 
   - name: Add Oban Pro Hex Repo
@@ -113,15 +116,19 @@ runs:
       mix hex.repo add oban https://getoban.pro/repo \
       --fetch-public-key ${{ inputs.oban-key-fingerprint }} \
       --auth-key ${{ inputs.oban-license-key }}
+    shell: bash
     if: inputs.with-oban == 'true'
 
   - name: Install dependencies
     run: mix deps.get
+    shell: bash
 
   - name: Compile dependencies
     run: mix deps.compile
+    shell: bash
     if: inputs.build-deps == 'true'
 
   - name: Compile application
     run: mix compile ${{ inputs.build-flags }}
+    shell: bash
     if: inputs.build-app == 'true'
