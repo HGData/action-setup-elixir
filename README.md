@@ -13,7 +13,7 @@
 To utilize this composite action, use the following workflow syntax:
 ```yaml
 - name: Setup Elixir
-  uses: hgdata/action-setup-elixir@v1.0.0
+  uses: hgdata/action-setup-elixir@v1.0.1
   with:
     elixir-version: ${{ matrix.pair.elixir }}
     otp-version: ${{ matrix.pair.otp }}
