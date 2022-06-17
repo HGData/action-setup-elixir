@@ -11,17 +11,17 @@ jobs:
     name: Semantic release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: hgdata/checkout@v2
-        with:
-          fetch-depth: 0
-          persist-credentials: false
+    - name: Checkout
+      uses: hgdata/checkout@v2
+      with:
+        fetch-depth: 0
+        persist-credentials: false
 
-      - name: Semantic release
-        uses: hgdata/semantic-release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_REPO_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          extends: |
-            @hgdata/semantic-release-config
+    - name: Semantic release
+      uses: hgdata/semantic-release-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_REPO_TOKEN_PUBLIC }}
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        extends: |
+          @hgdata/semantic-release-config
