@@ -1,0 +1,18 @@
+name: Name of composite action
+description: Description of composite action.
+inputs:
+  foo:
+    required: true
+    type: string
+    description: Description of foo
+  bar:
+    required: false
+    type: string
+    description: Description of bar
+runs:
+  using: "composite"
+  steps:
+  - name: Foo and bar
+    run: |
+      echo "foo: ${{ inputs.foo }}"
+      echo "bar: ${{ inputs.bar }}"

@@ -1,0 +1,7 @@
+updates:
+- package-ecosystem: "github-actions"
+  directory: "/"
+  target-branch: "develop"
+  open-pull-requests-limit: 3
+  schedule:
+    interval: "daily"
