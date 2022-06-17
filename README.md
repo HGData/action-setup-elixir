@@ -13,7 +13,7 @@
 To utilize this composite action, use the following workflow syntax:
 ```yaml
 - name: Setup Elixir
-  uses: hgdata/action-setup-elixir
+  uses: hgdata/action-setup-elixir@v1.0.0
   with:
     elixir-version: ${{ matrix.pair.elixir }}
     otp-version: ${{ matrix.pair.otp }}
@@ -23,4 +23,4 @@ To utilize this composite action, use the following workflow syntax:
     build-flags: --all-warnings --warnings-as-errors
 ```
 
-Note that tags can be referenced with `@<tag>`.
+Note that there _must_ be a tag reference.
