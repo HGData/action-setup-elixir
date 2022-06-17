@@ -14,4 +14,11 @@ To utilize this composite action, use the following workflow syntax:
 ```yaml
 - name: Setup Elixir
   uses: hgdata/action-setup-elixir@v1
+  with:
+    elixir-version: ${{ matrix.pair.elixir }}
+    otp-version: ${{ matrix.pair.otp }}
+    with-oban: true
+    oban-key-fingerprint: ${{ secrets.OBAN_KEY_FINGERPRINT }}
+    oban-license-key: ${{ secrets.OBAN_LICENSE_KEY }}
+    build-flags: --all-warnings --warnings-as-errors
 ```
