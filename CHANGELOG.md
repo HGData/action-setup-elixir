@@ -1,3 +1,16 @@
+## [1.0.1](https://github.com/HGData/action-setup-elixir/compare/v1.0.0...v1.0.1) (2022-06-17)
+
+
+### Bug Fixes
+
+* specify shell ([8a3af07](https://github.com/HGData/action-setup-elixir/commit/8a3af07f1e166ea70db156560f23a0642bc88be3))
+
+
+### Chores
+
+* update readme ([3683eda](https://github.com/HGData/action-setup-elixir/commit/3683eda4ebb91b6ee16a544b023425967f4c630d))
+* update readme ([5de8812](https://github.com/HGData/action-setup-elixir/commit/5de8812ceba34084465992c5ad2508249a3699bd))
+
 # 1.0.0 (2022-06-17)
 
 
