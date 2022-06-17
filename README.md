@@ -23,4 +23,4 @@ To utilize this composite action, use the following workflow syntax:
     build-flags: --all-warnings --warnings-as-errors
 ```
 
-Note that there _must_ be a tag reference.
+Note that there _must_ be a tag/branch reference.
