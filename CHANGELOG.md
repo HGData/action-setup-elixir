@@ -1,3 +1,16 @@
+## [1.0.2](https://github.com/HGData/action-setup-elixir/compare/v1.0.1...v1.0.2) (2022-10-06)
+
+
+### Bug Fixes
+
+* use hgdata action steps (#3) ([80871bd](https://github.com/HGData/action-setup-elixir/commit/80871bd18cd28097c91d9998c8f86aa749536547)), closes [#3](https://github.com/HGData/action-setup-elixir/issues/3)
+
+
+### Chores
+
+* update readme ([9258420](https://github.com/HGData/action-setup-elixir/commit/9258420a680f06120069cb460e7af6c5fa4b6d58))
+* update readme ([c0eea56](https://github.com/HGData/action-setup-elixir/commit/c0eea564300ec7191b278aaba82d712453b99200))
+
 ## [1.0.1](https://github.com/HGData/action-setup-elixir/compare/v1.0.0...v1.0.1) (2022-06-17)
 
 
