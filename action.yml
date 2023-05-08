@@ -70,16 +70,17 @@ runs:
       elixir-version: ${{ inputs.elixir-version }}
       otp-version: ${{ inputs.otp-version }}
 
-  - name: Get deps cache
-    uses: hgdata/cache@v2
+  - name: Restore deps cache
+    uses: hgdata/cache/restore@v3
+    id: deps-cache
     with:
       path: deps/
       key: deps-${{ inputs.cache-key }}-${{ runner.os }}-${{ hashFiles('**/mix.lock') }}
       restore-keys: |
         deps-${{ inputs.cache-key }}-${{ runner.os }}-
 
-  - name: Get build cache
-    uses: hgdata/cache@v2
+  - name: Restore build cache
+    uses: hgdata/cache/restore@v3
     id: build-cache
     with:
       path: _build/${{env.MIX_ENV}}/
@@ -123,6 +124,14 @@ runs:
     run: mix deps.get
     shell: bash
 
+  - name: Save deps cache
+    uses: hgdata/cache/save@v3
+    if: steps.deps-cache.outputs.cache-hit != 'true'
+    id: deps-cache-save
+    with:
+      path: deps/
+      key: deps-${{ inputs.cache-key }}-${{ runner.os }}-${{ hashFiles('**/mix.lock') }}
+
   - name: Compile dependencies
     run: mix deps.compile
     shell: bash
@@ -132,3 +141,11 @@ runs:
     run: mix compile ${{ inputs.build-flags }}
     shell: bash
     if: inputs.build-app == 'true'
+
+  - name: Save build cache
+    uses: hgdata/cache/save@v3
+    if: inputs.build-app == 'true' && steps.build-cache.outputs.cache-hit != 'true'
+    id: build-cache-save
+    with:
+      path: _build/${{env.MIX_ENV}}/
+      key: build-${{ inputs.cache-key }}-${{ runner.os }}-${{ inputs.otp-version }}-${{ inputs.elixir-version }}-${{ env.MIX_ENV }}-${{ hashFiles('**/mix.lock') }}
