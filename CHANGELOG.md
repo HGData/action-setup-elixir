@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/HGData/action-setup-elixir/compare/v1.0.2...v1.0.3) (2023-05-16)
+
+
+### Bug Fixes
+
+* split restore and save of caches for faster builds (#4) ([c38b51a](https://github.com/HGData/action-setup-elixir/commit/c38b51aa3ca328a4017638470920840b4596dd87)), closes [#4](https://github.com/HGData/action-setup-elixir/issues/4)
+
 ## [1.0.2](https://github.com/HGData/action-setup-elixir/compare/v1.0.1...v1.0.2) (2022-10-06)
 
 
