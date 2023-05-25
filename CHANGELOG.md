@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/HGData/action-setup-elixir/compare/v1.0.3...v1.0.4) (2023-05-25)
+
+
+### Bug Fixes
+
+* **ci:** push updates to major version branch (#6) ([a2324cc](https://github.com/HGData/action-setup-elixir/commit/a2324cc01bd1ebc897cbeb5f1cfeedf5a34cb4e1)), closes [#6](https://github.com/HGData/action-setup-elixir/issues/6)
+
 ## [1.0.3](https://github.com/HGData/action-setup-elixir/compare/v1.0.2...v1.0.3) (2023-05-16)
 
 
