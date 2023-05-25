@@ -18,6 +18,7 @@ jobs:
         persist-credentials: false
 
     - name: Semantic release
+      id: semantic
       uses: hgdata/semantic-release-action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.ACTIONS_REPO_TOKEN_PUBLIC }}
@@ -25,3 +26,9 @@ jobs:
       with:
         extends: |
           @hgdata/semantic-release-config
+
+    - name: Push updates to branch for major version
+      if: steps.semantic.outputs.new_release_published == 'true'
+      run: "git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:refs/heads/v${{steps.semantic.outputs.new_release_major_version}}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_REPO_TOKEN_PUBLIC }}
