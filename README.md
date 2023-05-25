@@ -8,12 +8,13 @@
 - Configures Elixir
 - Fetches dependencies
 - Manages build caching
+
 ## Usage
 
 To utilize this composite action, use the following workflow syntax:
 ```yaml
 - name: Setup Elixir
-  uses: hgdata/action-setup-elixir@v1.0.1
+  uses: hgdata/action-setup-elixir@v1
   with:
     elixir-version: ${{ matrix.pair.elixir }}
     otp-version: ${{ matrix.pair.otp }}
@@ -24,3 +25,10 @@ To utilize this composite action, use the following workflow syntax:
 ```
 
 Note that there _must_ be a tag/branch reference.
+
+## Releasing
+
+To keep the changes minimal in repos that use this action we are adding a `v1` tag 
+that must be manually pointed to the latest semver (e.g. v1.0.3) tag.
+
+This allows users to do this `uses: hgdata/action-setup-elixir@v1` instead of `uses: hgdata/action-setup-elixir@v1.0.3`.
