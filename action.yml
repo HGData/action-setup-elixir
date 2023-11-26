@@ -3,11 +3,9 @@ description: Checks out the code, configures Elixir, fetches dependencies, and m
 inputs:
   elixir-version:
     required: true
-    type: string
     description: Elixir version to set up
   otp-version:
     required: true
-    type: string
     description: OTP version to set up
   #
   # Inputs below are optional.
@@ -18,47 +16,37 @@ inputs:
   #
   build-deps:
     required: false
-    type: boolean
-    default: true
     description: True if we should compile dependencies
   build-app:
     required: false
-    type: boolean
     default: true
     description: True if we should compile the application itself
   build-flags:
     required: false
-    type: string
     default: '--all-warnings'
     description: Flags to pass to mix compile
   install-rebar:
     required: false
-    type: boolean
     default: true
     description: By default, we will install Rebar (mix local.rebar --force).
   install-hex:
     required: false
-    type: boolean
     default: true
     description: By default, we will install Hex (mix local.hex --force).
   cache-key:
     required: false
-    type: string
     default: 'v1'
     description: If you need to reset the cache for some reason, you can change this key.
   with-oban:
     required: false
-    type: boolean
     default: false
     description: Add the Oban Pro Hex repository for installing Oban
   oban-key-fingerprint:
     required: false
-    type: string
     default: ''
     description: The Oban Pro key fingerprint (required if with-oban = true)
   oban-license-key:
     required: false
-    type: string
     default: ''
     description: The Oban Pro license key (required if with-oban = true)
 runs:
@@ -74,7 +62,7 @@ runs:
     uses: hgdata/cache/restore@v3
     id: deps-cache
     with:
-      path: deps/
+      path: deps
       key: deps-${{ inputs.cache-key }}-${{ runner.os }}-${{ hashFiles('**/mix.lock') }}
       restore-keys: |
         deps-${{ inputs.cache-key }}-${{ runner.os }}-
@@ -83,10 +71,10 @@ runs:
     uses: hgdata/cache/restore@v3
     id: build-cache
     with:
-      path: _build/${{env.MIX_ENV}}/
-      key: build-${{ inputs.cache-key }}-${{ runner.os }}-${{ inputs.otp-version }}-${{ inputs.elixir-version }}-${{ env.MIX_ENV }}-${{ hashFiles('**/mix.lock') }}
+      path: _build
+      key: build-${{ inputs.cache-key }}-${{ runner.os }}-${{ inputs.otp-version }}-${{ inputs.elixir-version }}-${{ hashFiles('**/mix.lock') }}
       restore-keys: |
-        build-${{ inputs.cache-key }}-${{ runner.os }}-${{ inputs.otp-version }}-${{ inputs.elixir-version }}-${{ env.MIX_ENV }}-
+        build-${{ inputs.cache-key }}-${{ runner.os }}-${{ inputs.otp-version }}-${{ inputs.elixir-version }}-
 
   #
   # In my experience, I have issues with incremental builds maybe 1 in 100
@@ -129,7 +117,7 @@ runs:
     if: steps.deps-cache.outputs.cache-hit != 'true'
     id: deps-cache-save
     with:
-      path: deps/
+      path: deps
       key: deps-${{ inputs.cache-key }}-${{ runner.os }}-${{ hashFiles('**/mix.lock') }}
 
   - name: Compile dependencies
@@ -147,5 +135,5 @@ runs:
     if: inputs.build-app == 'true' && steps.build-cache.outputs.cache-hit != 'true'
     id: build-cache-save
     with:
-      path: _build/${{env.MIX_ENV}}/
-      key: build-${{ inputs.cache-key }}-${{ runner.os }}-${{ inputs.otp-version }}-${{ inputs.elixir-version }}-${{ env.MIX_ENV }}-${{ hashFiles('**/mix.lock') }}
+      path: _build
+      key: build-${{ inputs.cache-key }}-${{ runner.os }}-${{ inputs.otp-version }}-${{ inputs.elixir-version }}-${{ hashFiles('**/mix.lock') }}
