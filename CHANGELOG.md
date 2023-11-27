@@ -1,3 +1,15 @@
+## [1.0.5](https://github.com/HGData/action-setup-elixir/compare/v1.0.4...v1.0.5) (2023-11-27)
+
+
+### Bug Fixes
+
+* warnings and _build cache path (#7) ([de38a2f](https://github.com/HGData/action-setup-elixir/commit/de38a2f7211c0df93b4f0862f74fea5480f99cb9)), closes [#7](https://github.com/HGData/action-setup-elixir/issues/7)
+
+
+### Chores
+
+* update README for v1 tag usage (#5) ([35ca899](https://github.com/HGData/action-setup-elixir/commit/35ca8992cd5d823d79b95373102b42919c5db86e)), closes [#5](https://github.com/HGData/action-setup-elixir/issues/5)
+
 ## [1.0.4](https://github.com/HGData/action-setup-elixir/compare/v1.0.3...v1.0.4) (2023-05-25)
 
 
