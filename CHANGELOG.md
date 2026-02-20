@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/HGData/action-setup-elixir/compare/v1.0.5...v1.0.6) (2026-02-20)
+
+
+### Bug Fixes
+
+* upgrade to actions/cache@v5 (legacy cache service sunset) ([063bef4](https://github.com/HGData/action-setup-elixir/commit/063bef4c3705517eb9611f794b59e873a5f1c1ac))
+
 ## [1.0.5](https://github.com/HGData/action-setup-elixir/compare/v1.0.4...v1.0.5) (2023-11-27)
 
 
