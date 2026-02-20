@@ -59,7 +59,7 @@ runs:
       otp-version: ${{ inputs.otp-version }}
 
   - name: Restore deps cache
-    uses: hgdata/cache/restore@v3
+    uses: actions/cache/restore@v5
     id: deps-cache
     with:
       path: deps
@@ -68,7 +68,7 @@ runs:
         deps-${{ inputs.cache-key }}-${{ runner.os }}-
 
   - name: Restore build cache
-    uses: hgdata/cache/restore@v3
+    uses: actions/cache/restore@v5
     id: build-cache
     with:
       path: _build
@@ -113,7 +113,7 @@ runs:
     shell: bash
 
   - name: Save deps cache
-    uses: hgdata/cache/save@v3
+    uses: actions/cache/save@v5
     if: steps.deps-cache.outputs.cache-hit != 'true'
     id: deps-cache-save
     with:
@@ -131,7 +131,7 @@ runs:
     if: inputs.build-app == 'true'
 
   - name: Save build cache
-    uses: hgdata/cache/save@v3
+    uses: actions/cache/save@v5
     if: inputs.build-app == 'true' && steps.build-cache.outputs.cache-hit != 'true'
     id: build-cache-save
     with:
